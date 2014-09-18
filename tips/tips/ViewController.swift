@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
-    var defaults = NSUserDefaults.standardUserDefaults()
-    var defaultTipPercentage = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +27,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
+        var defaults = NSUserDefaults.standardUserDefaults()
+        var defaultTipPercentage = 20
+        
+        billField.clearsOnBeginEditing = true
+        if defaults.integerForKey("defaultTipPercentage") != 0 {
+            defaultTipPercentage = defaults.integerForKey("defaultTipPercentage")
+        } else {
+            defaults.setInteger(20, forKey: "defaultTipPercentage")
+            defaults.synchronize()
+        }
+        
+        tipControl.setTitle("\(defaultTipPercentage - 5)", forSegmentAtIndex: 0)
+        tipControl.setTitle("\(defaultTipPercentage)", forSegmentAtIndex: 1)
+        tipControl.setTitle("\(defaultTipPercentage + 5)", forSegmentAtIndex: 2)
+        
         var tipPercentages = [defaultTipPercentage - 5, defaultTipPercentage, defaultTipPercentage + 5]
         var tipPercentage = Double(tipPercentages[tipControl.selectedSegmentIndex])
         var billAmount = NSString(string: billField.text).doubleValue
         var tip = billAmount * tipPercentage / 100
         var total = billAmount + tip
-        
-        billField.clearsOnBeginEditing = true
-        defaultTipPercentage = defaults.integerForKey("defaultTipPercentage")
-        tipControl.setTitle("\(defaultTipPercentage - 5)", forSegmentAtIndex: 0)
-        tipControl.setTitle("\(defaultTipPercentage)", forSegmentAtIndex: 1)
-        tipControl.setTitle("\(defaultTipPercentage + 5)", forSegmentAtIndex: 2)
+
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)

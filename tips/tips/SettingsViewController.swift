@@ -29,7 +29,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onSliderValueChanged(sender: AnyObject) {
         defaultTipPercentageLabel.text = NSNumberFormatter().stringFromNumber(floor(defaultTipPercentageSlider.value)) + "%"
-        println("\(defaultTipPercentageSlider.value)")
     }
 
     @IBAction func onSaveAndExitSettings(sender: AnyObject) {

@@ -12,6 +12,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary] = []
+    var refreshControl: UIRefreshControl!
+    @IBOutlet weak var networkErrorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,17 +22,33 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        var url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=5pv9wp8k4k7veqzfyn4dtnxf"
-        var request = NSURLRequest(URL: NSURL(string: url))
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+        
+        var moviesUrl = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=5pv9wp8k4k7veqzfyn4dtnxf"
+        var moviesRequest = NSURLRequest(URL: NSURL(string: moviesUrl))
+        NSURLConnection.sendAsynchronousRequest(moviesRequest, queue: NSOperationQueue.mainQueue()) {
             (response: NSURLResponse!, data, error) -> Void in
-            var object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-            self.movies = object["movies"] as [NSDictionary]
+            if error == nil {
+                var moviesObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                self.movies = moviesObject["movies"] as [NSDictionary]
             
-            self.tableView.reloadData()
+                self.tableView.reloadData()
+            } else {
+                self.throwNetworkError()
+            }
         }
     }
 
+    func refresh(sender:AnyObject)
+    {
+        // Code to refresh table view
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,7 +71,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var movie = movies[indexPath.row]
+        var movieId = movie["id"] as String
+        
+        performSegueWithIdentifier("movieDetails", sender: movieId)
+    }
     
+    func throwNetworkError() {
+        self.networkErrorView.hidden = false
+        self.networkErrorView.alpha = 0
+        UIView.animateWithDuration(3, animations: { self.networkErrorView.alpha = 1 })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "movieDetails" {
+            let MovieDetailsVC = segue.destinationViewController as MovieDetailsViewController
+            MovieDetailsVC.movieId = sender as String
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1S7-1n-FxZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1S7-1n-FxZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -31,7 +31,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="3x7-Nm-x7C"/>
                     <connections>
-                        <segue destination="rM7-zK-zdk" kind="modal" identifier="loginSegue" id="v1I-ye-zjo"/>
+                        <segue destination="6rr-85-Keo" kind="modal" identifier="loginSegue" id="qBh-Gg-om5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -130,6 +130,141 @@
             </objects>
             <point key="canvasLocation" x="1440" y="281"/>
         </scene>
+        <!--Container View Controller-->
+        <scene sceneID="0tW-l0-Pym">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yWA-4u-u6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ContainerViewController" id="6rr-85-Keo" customClass="ContainerViewController" customModule="Nwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gPc-o4-UNf"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fk-Fq-Ezg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hdT-gy-YAa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.86524008659999996" green="1" blue="0.74918194540000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="646" y="958"/>
+        </scene>
+        <!--Main View-->
+        <scene sceneID="UEm-hv-a0P">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="FG6-hD-QEf" customClass="MainViewController" customModule="Nwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V1i-NI-RHb"/>
+                        <viewControllerLayoutGuide type="bottom" id="ASA-0M-Lya"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6fj-BT-sSj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Val-6K-aaN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="frN-SK-pRd"/>
+                                </constraints>
+                                <string key="text">MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView MainView </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93786090349999995" green="0.75105407000000002" blue="0.37618184649999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Val-6K-aaN" firstAttribute="leading" secondItem="V1i-NI-RHb" secondAttribute="leading" id="Z7Z-7F-cGY"/>
+                            <constraint firstItem="Val-6K-aaN" firstAttribute="bottom" secondItem="ASA-0M-Lya" secondAttribute="top" id="oXu-3D-hnh"/>
+                            <constraint firstItem="Val-6K-aaN" firstAttribute="top" secondItem="6fj-BT-sSj" secondAttribute="top" id="qop-zs-FPn"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Main View" id="HIs-gP-CBI">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="7xR-07-Rtz">
+                            <connections>
+                                <action selector="onMenu:" destination="FG6-hD-QEf" id="yc5-pq-pyt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mainNavigationItem" destination="HIs-gP-CBI" id="7sf-8o-xI1"/>
+                        <outlet property="menuBarButton" destination="7xR-07-Rtz" id="3eb-WX-ydx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bl9-7n-dog" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024" y="958"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="4Pl-I5-PEF">
+            <objects>
+                <viewController id="IKM-RZ-kgd" customClass="ProfileViewController" customModule="Nwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e9U-GW-kzh"/>
+                        <viewControllerLayoutGuide type="bottom" id="cDI-1C-WsA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hjJ-2L-OqK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.77963137709999997" green="0.89070699499999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzt-rO-O6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440" y="958"/>
+        </scene>
+        <!--Left Panel View Controller-->
+        <scene sceneID="c07-gP-RKK">
+            <objects>
+                <viewController storyboardIdentifier="LeftPanelViewController" id="cP5-WF-Afq" customClass="LeftPanelViewController" customModule="Nwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hy3-os-6WU"/>
+                        <viewControllerLayoutGuide type="bottom" id="edO-kn-fmA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fcj-1z-Wu8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQv-uh-CO6">
+                                <rect key="frame" x="21" y="136" width="44" height="30"/>
+                                <state key="normal" title="Profile">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onProfile:" destination="cP5-WF-Afq" eventType="touchUpInside" id="yW2-z7-Dyw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7F-GJ-FTw">
+                                <rect key="frame" x="21" y="196" width="48" height="30"/>
+                                <state key="normal" title="Tweets">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTweets:" destination="cP5-WF-Afq" eventType="touchUpInside" id="mHR-7o-Tza"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uk0-6n-Uku">
+                                <rect key="frame" x="21" y="257" width="86" height="30"/>
+                                <state key="normal" title="Post a tweet">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPostATweet:" destination="cP5-WF-Afq" eventType="touchUpInside" id="xo2-vd-oem"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <segue destination="IKM-RZ-kgd" kind="modal" identifier="MainToProfileSegue" id="qfT-Aa-RRY"/>
+                        <segue destination="rM7-zK-zdk" kind="modal" identifier="MainToTweetsSegue" id="nJE-Uc-vad"/>
+                        <segue destination="cOa-D5-pKX" kind="modal" identifier="MainToPostTweetSegue" id="AHe-iS-EpY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WKp-ng-VbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="958"/>
+        </scene>
         <!--Post Tweet View Controller-->
         <scene sceneID="nKF-q2-nTf">
             <objects>
@@ -143,14 +278,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mSD-uo-XlA">
-                                <rect key="frame" x="23" y="71" width="50" height="50"/>
+                                <rect key="frame" x="23" y="27" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="isT-qj-aTD"/>
                                     <constraint firstAttribute="height" constant="50" id="wpc-4Y-uOk"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiE-a0-cpl">
-                                <rect key="frame" x="88" y="71" width="209" height="40"/>
+                                <rect key="frame" x="88" y="27" width="209" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -161,7 +296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-8N-uYH">
-                                <rect key="frame" x="23" y="136" width="274" height="150"/>
+                                <rect key="frame" x="23" y="92" width="274" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="eVR-Q6-sqc"/>
                                 </constraints>
@@ -218,6 +353,7 @@
         <!--Navigation Controller-->
         <scene sceneID="hqf-LD-oto">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTN-Jx-olj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1S7-1n-FxZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="och-CL-E5h">
@@ -226,16 +362,16 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6BA-Wg-2ws"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="a6i-Sz-YQK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UTN-Jx-olj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="114" y="281"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="74B-vN-Bif">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a5u-fL-rpc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="rM7-zK-zdk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8H0-uD-Z20">
@@ -247,7 +383,6 @@
                         <segue destination="Vh2-xX-n1z" kind="relationship" relationship="rootViewController" id="Ehh-U9-qmU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a5u-fL-rpc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1024" y="281"/>
         </scene>
@@ -257,4 +392,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="AHe-iS-EpY"/>
+    </inferredMetricsTieBreakers>
 </document>
